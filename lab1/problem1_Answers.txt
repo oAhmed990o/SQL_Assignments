@@ -1,0 +1,23 @@
+Question 1:
+
+INSERT INTO department (Dname,mgr_ssn,mgr_start_date) VALUES ('software development',1,'30-11-2016');
+
+DELETE FROM employee WHERE ssn = 1;
+
+row is not deleted and the following error occurs:
+	#1451 - Cannot delete or update a parent row: a foreign key constraint fails 
+	(`company`.`department`, CONSTRAINT `department_ibfk_1` FOREIGN KEY (`mgr_ssn`) 
+	REFERENCES `employee` (`ssn`))
+
+Question 2:
+
+INSERT INTO project(Pname,Plocation,Dno) VALUES('online shared IDE','alexandria university',20);
+
+row is not inserted and the following error occurs:
+	#1452 - Cannot add or update a child row: a foreign key
+ 	constraint fails (`company`.`project`, CONSTRAINT 
+	`project_ibfk_1` FOREIGN KEY (`Dno`) REFERENCES `department` (`Dnumber`))
+
+Question 3:
+
+the first row can't be inserted in either tables as both depend on a coloumn in each other's tables

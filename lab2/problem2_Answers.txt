@@ -1,0 +1,24 @@
+Question 1:
+
+SELECT * FROM `member` WHERE join_date > '2000-09-1 00:00:00';
+
+Question 2:
+
+SELECT * FROM `member` WHERE join_date > '1995-10-1 00:00:00' AND join_date < '2019-10-1 23:59:59';
+
+Question 3:
+
+SELECT * FROM `book` INNER JOIN publisher ON 
+book.pub_id = publisher.pub_id AND book.price > 15 AND book.price < 20 OR publisher.name = 'Oxford';
+
+Question 4:
+
+SELECT title FROM book INNER JOIN borrowing_book ON book.book_id = borrowing_book.book_id 
+INNER JOIN member ON member.member_id = borrowing_book.member_id 
+AND member.name = 'Scott Reinger';
+
+Question 5:
+
+SELECT name FROM member INNER JOIN borrowing_book 
+ON member.member_id = borrowing_book.member_id AND borrowing_book.borrow_date < '2020-01-1 00:00:00' 
+AND borrowing_book.borrow_date > '2018-12-31 23:59:59';
