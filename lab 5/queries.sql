@@ -1,4 +1,4 @@
-1.	SELECT DISTINCT S.student_name
+	SELECT DISTINCT S.student_name
 	FROM student S, enrolled E
 	WHERE S.level = 'SR' AND S.student_id = E.student_id 
 	AND E.course_code IN (
@@ -7,7 +7,7 @@
 		WHERE SC.prof_id = 1 
 	);
 
-2.	SELECT MAX(S.age)
+	SELECT MAX(S.age)
 	FROM student S, enrolled E, semester_course SC
 	WHERE S.student_id = E.student_id AND S.major = 'History'  
 	OR E.course_code IN (
@@ -16,7 +16,7 @@
 		WHERE SC1.prof_id = P.prof_id AND P.prof_name = 'Michael Miller' 
 	);
 
-3.	SELECT S.student_name, C.name
+	SELECT S.student_name, C.name
 	FROM student S, enrolled E, course C
 	WHERE S.student_id = E.student_id AND E.course_code = C.course_code
 	UNION
@@ -28,7 +28,7 @@
 		WHERE S2.student_id = E1.student_id
 	);
 	
-4.	SELECT DISTINCT P.prof_name
+	SELECT DISTINCT P.prof_name
 	FROM professor P
 	WHERE (
 		SELECT COUNT(*)
@@ -36,7 +36,7 @@
 		WHERE SC.prof_id = P.prof_id
 	) < 5;
 
-5.	SELECT DISTINCT S.student_name
+	SELECT DISTINCT S.student_name
 	FROM student S, enrolled E, semester_course SC
 	WHERE S.student_id = E.student_id AND E.course_code = SC.course_code
 	AND SC.course_code NOT IN(
@@ -49,7 +49,7 @@
 		)
 	);
 
-6.	SELECT *
+	SELECT *
 	FROM course C1
 	WHERE C1.course_code NOT IN (
 		SELECT C2.course_code
@@ -62,7 +62,7 @@
 	WHERE C3.course_code = SC3.course_code AND SC3.prof_id = P.prof_id
 	AND P.dept_id = D.dept_id AND D.dept_name = 'Computer Science';
 
-7.	SELECT S.student_name
+	SELECT S.student_name
 	FROM student S, enrolled E, semester_course SC, professor P
 	WHERE S.student_name LIKE 'M%' AND age < 20
 	UNION
@@ -74,7 +74,7 @@
 		WHERE SC.prof_id = P1.prof_id
 	) > 2;
 
-8.	SELECT DISTINCT P.prof_name, P.prof_id
+	SELECT DISTINCT P.prof_name, P.prof_id
 	FROM professor P, department D
 	WHERE (
 		SELECT COUNT(*)
@@ -84,7 +84,7 @@
 			OR D.dept_id = 3 OR D.dept_id = 4
 			);
 
-9.	SELECT DISTINCT S.student_name, P.prof_name
+	SELECT DISTINCT S.student_name, P.prof_name
 	FROM student S, enrolled E, semester_course SC, professor P
 	WHERE S.student_id = E.student_id AND E.course_code = SC.course_code
 	AND SC.prof_id = P.prof_id 
@@ -105,7 +105,7 @@
 		WHERE S1.student_id = E.student_id
 	);
 
-10.	SELECT C.name, C.course_code, P.prof_name, P.prof_id
+	SELECT C.name, C.course_code, P.prof_name, P.prof_id
 	FROM course C, semester_course SC, professor P
 	WHERE C.course_code = SC.course_code AND SC.prof_id = P.prof_id AND (
 		SELECT COUNT(*)
@@ -113,7 +113,7 @@
 		WHERE C1.course_code = SC.course_code
 	) >= 2;
 
-11.	SELECT D.dept_name
+	SELECT D.dept_name
 	FROM department D, professor P
 	WHERE (
 		SELECT COUNT(*)
